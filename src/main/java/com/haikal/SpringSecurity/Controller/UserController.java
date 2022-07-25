@@ -16,6 +16,7 @@ import com.haikal.SpringSecurity.Domain.Role;
 import com.haikal.SpringSecurity.Domain.User;
 import com.haikal.SpringSecurity.Service.UserService;
 
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
@@ -28,7 +29,6 @@ public class UserController {
 
     @GetMapping("/user")
     public ResponseEntity<List<User>> getAllUsers() {
-        log.info("User controller get all users ");
         log.info("User controller get all users ");
         return ResponseEntity.ok().body(userService.getListUser());
 
@@ -48,5 +48,20 @@ public class UserController {
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("api/role/save").toUriString());
         return ResponseEntity.created(uri).body(userService.saveRole(role));
     }
+
+
+    @PostMapping("/role/addtouser")
+    public ResponseEntity<?> addRoleToUser (@RequestBody roleForm roleForm){
+        userService.addRoletoUser(roleForm.getUserName(),roleForm.getRoleName());
+        return ResponseEntity.ok().build();
+
+    }
+
+    @Data
+    public class roleForm {
+       private String roleName;
+       private String userName; 
+    }
+    
 
 }
