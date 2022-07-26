@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-
+import org.springframework.context.annotation.Bean;s
 import com.haikal.SpringSecurity.Domain.Role;
 import com.haikal.SpringSecurity.Domain.User;
 import com.haikal.SpringSecurity.Service.UserService;
@@ -20,7 +19,6 @@ public class SpringSecurityApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringSecurityApplication.class, args);
 	}
-
 	@Bean
 	CommandLineRunner run(UserService userService) {
 		log.info("Run CommandLineRunner");
